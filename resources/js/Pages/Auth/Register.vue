@@ -32,6 +32,7 @@ const submit = () => {
         </template>
 
         <form @submit.prevent="submit">
+            <div class="text-3xl my-4 text-blue-700 text-center font-bold">SIGN UP</div>
             <div>
                 <InputLabel for="name" value="Name" />
                 <TextInput

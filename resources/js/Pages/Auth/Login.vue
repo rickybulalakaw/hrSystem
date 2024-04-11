@@ -42,7 +42,14 @@ const submit = () => {
         </div>
 
         <form @submit.prevent="submit">
-            <div>
+            <div class="text-3xl my-4 text-blue-700 text-center font-bold">LOGIN</div>
+            <div class="text-center">
+                <Link :href="route('register')" class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    <span class="underline-none">Doesn't have an account yet?</span> <span class="underline text-blue-500">Sign Up</span>
+                </Link>
+            </div>
+
+            <div> 
                 <InputLabel for="email" value="Email" />
                 <TextInput
                     id="email"
@@ -69,7 +76,7 @@ const submit = () => {
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
-            <div class="block mt-4">
+            <div class="flex items-center justify-between mt-4">
                 <label class="flex items-center">
                     <Checkbox v-model:checked="form.remember" name="remember" />
                     <span class="ms-2 text-sm text-gray-600">Remember me</span>
@@ -77,7 +84,7 @@ const submit = () => {
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <Link v-if="canResetPassword" :href="route('password.request')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                     Forgot your password?
                 </Link>
 
