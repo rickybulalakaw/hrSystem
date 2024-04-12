@@ -25,4 +25,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/pds', function () {
+        return Inertia::render('Pds');
+    })->name('pds');
 });

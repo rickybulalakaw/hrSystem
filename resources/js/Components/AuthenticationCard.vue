@@ -3,7 +3,7 @@
       <div class="flex flex-col sm:flex-row justify-evenly w-full px-6">
         <div class="my-auto flex flex-col items-center md:items-center sm:items-start">
           <slot class="mx-auto" name="logo" />
-          <div class="text-3xl text-blue-900 font-bold my-2">INTEGRATED HUMAN RESOURCE</div>
+          <div class="text-4xl text-blue-900 font-bold my-2">INTEGRATED HUMAN RESOURCE</div>
           <div class="text-3xl block text-center font-bold text-gray-800 ">INFORMATION SYSTEM</div>
         </div>
         
@@ -13,4 +13,3 @@
       </div>
     </div>
   </template>
-  

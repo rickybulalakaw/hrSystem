@@ -7,7 +7,7 @@ import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-
+ 
 defineProps({
     title: String,
 });
@@ -33,15 +33,19 @@ const logout = () => {
 
         <Banner />
 
-        <div class="min-h-screen bg-gray-100">
-            <nav class="fixed top-0 z-30 w-full border-b bg-white">
-                <!-- Primary Navigation Menu -->
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <div class="min-h-screen bg-blue-100">
+            <nav class="bg-white">
+            <div class="max-w-6xl mx-auto sm:px-6 sm:ml-64">
                     <div class="flex justify-between h-16">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="shrink-0 flex items-center">
-                                <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out sm:hidden" @click="showingSidebar = ! showingSidebar; overlay = !overlay">
+                            <div class="shrink-0 flex ">
+                                <header v-if="$slots.header" class="">
+                                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                                    <slot name="header" />
+                                </div>
+                            </header>
+                                <button class="inline-flex items-center justify-center p-2  rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out sm:hidden" @click="showingSidebar = ! showingSidebar; overlay = !overlay">
                                     <svg
                                         class="h-6 w-6"
                                         stroke="currentColor"
@@ -68,10 +72,10 @@ const logout = () => {
                             </div>
 
                             <!-- Navigation Links -->
-
+                        
                         </div>
 
-                        <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <div class="hidden sm:flex sm:items-center sm:ms-6 ">
                             <div class="ms-3 relative">
                                 <!-- Teams Dropdown -->
                                 <Dropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
@@ -287,49 +291,43 @@ const logout = () => {
                             </template>
                         </div>
                     </div>
+
                 </div>
-            </nav>
 
-            <div id="overlay" v-if="overlay" @click="showingSidebar = !showingSidebar; overlay = !overlay"></div>
-
+            
+            </nav><div id="overlay" v-if="overlay" @click="showingSidebar = !showingSidebar; overlay = !overlay"></div>
             <aside id="sidebar" :class="`fixed top-0 left-0 z-40 w-64 h-screen pt-3 transition-transform sm:translate-x-0 bg-white border-r border-gray-200 dark:border-gray-100 ${!showingSidebar ? '-translate-x-full' : ''}`" aria-label="Sidebar">
             <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
                 <!-- Logo -->
-                <div class="flex items-center justify-center mb-4">
+                <div class="flex items-center justify-center mb-14">
                     <Link :href="route('dashboard')" class="">
-                        <ApplicationMark class="block h-9 w-[52px]" />
+                        <ApplicationMark class="block h-9 w-[80px]" />
                     </Link>
                 </div>
 
                 <ul class="space-y-2 font-medium">
-                    <li >
-                        <a :href="route('dashboard')" :class="`flex items-center p-2 mt-10 mb-1 text-gray-900 rounded-lg hover:bg-blue-100 dark:hover:bg-blue-500 group`">
+                    <li >                        
+                        <a :href="route('dashboard')" :class="`flex items-start p-2 mt-10 mb-1 text-gray-900 rounded-lg hover:bg-blue-400 group`">
                             <i class="fa fa-dashboard"></i>
-                            <span class="ms-3">Dashboard</span>
+                            <span class="ms-3">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a :href="route('pds')" :class="`flex items-start p-2  mb-1 text-gray-900 rounded-lg hover:bg-blue-400 group`">
+                            <i class="fa fa-dashboard"></i>
+                            <span class="ms-3">Personal Data Sheet</span>
                         </a>
                     </li>
                 </ul>
             </div>  
         </aside>
 
-
-
-            
             <div class="sm:ml-64">
                 <!-- Page Content -->
-                <main class="min-h-screen pt-16">
-                    <!-- Page Heading -->
-                    <header v-if="$slots.header" class="">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                            <slot name="header" />
-                        </div>
-                    </header>
+                <main class="min-h-screen pt-4 p-4 lg:rounded-lg">
+
                     <slot />
                 </main>
-
-
-
-
             </div>
         </div>
     </div>

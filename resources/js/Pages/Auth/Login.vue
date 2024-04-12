@@ -45,7 +45,7 @@ const submit = () => {
             <div class="text-3xl my-4 text-blue-700 text-center font-bold">LOGIN</div>
             <div class="text-center">
                 <Link :href="route('register')" class="text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                    <span class="underline-none">Doesn't have an account yet?</span> <span class="underline text-blue-500">Sign Up</span>
+                    <span class="underline-none">Doesn't have an account yet?</span> <span class="underline text-blue-600 hover:text-blue-500">Sign Up</span>
                 </Link>
             </div>
 
