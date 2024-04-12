@@ -15,8 +15,6 @@ use Inertia\Inertia;
 |
 */
 
-
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -25,6 +23,19 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+
+    // Admin Routes
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin/dashboard', function () {
+            return Inertia::render('Admin/Dashboard');
+        })->name('admin.dashboard');
+
+        Route::get('/admin/users', function () {
+            return Inertia::render('Admin/Users');
+        })->name('admin.users');
+        
+    });
+
     Route::get('/pds', function () {
         return Inertia::render('Pds');
     })->name('pds');
